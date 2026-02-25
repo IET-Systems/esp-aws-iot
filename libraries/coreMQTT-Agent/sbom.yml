@@ -1,0 +1,7 @@
+name: 'coreMQTT-Agent'
+version: '202406.03-LTS'
+license: 'Apache-2.0'
+supplier: 'Organization: Espressif Systems (Shanghai) CO LTD'
+originator: 'Organization: Espressif Systems (Shanghai) CO LTD'
+description: 'ESP-IDF port of the coreMQTT-Agent library for multi-threaded MQTT agent operations.'
+url: https://github.com/espressif/esp-aws-iot
