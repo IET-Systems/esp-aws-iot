@@ -1,3 +1,4 @@
+#idf_component_register(SRCS "" INCLUDE_DIRS ".")
 set(COMPONENT_ADD_INCLUDEDIRS "port/include aws-iot-device-sdk-embedded-C/include aws-iot-device-sdk-embedded-C/external_libs/jsmn/" )
 set(aws_sdk_dir aws-iot-device-sdk-embedded-C/src)
 set(COMPONENT_SRCS "${aws_sdk_dir}/aws_iot_jobs_interface.c"
@@ -21,7 +22,7 @@ set(COMPONENT_SRCS "${aws_sdk_dir}/aws_iot_jobs_interface.c"
                    "port/threads_freertos.c"
                    "port/timer.c")
 
-set(COMPONENT_REQUIRES "mbedtls")
+set(COMPONENT_REQUIRES "mbedtls" "esp_netif" "net" )
 
 register_component()
 target_compile_options(${COMPONENT_LIB} PRIVATE -Wno-format)

@@ -27,6 +27,8 @@
 #include "network_platform.h"
 
 #include "mbedtls/esp_debug.h"
+#include "esp_netif.h"
+extern esp_netif_t *get_active_netif(void);
 
 #ifdef CONFIG_AWS_IOT_USE_HARDWARE_SECURE_ELEMENT
 #include "mbedtls/atca_mbedtls_wrap.h"
@@ -252,7 +254,7 @@ IoT_Error_t iot_tls_connect(Network *pNetwork, TLSConnectParams *params) {
 
     /* Done parsing certs */
     ESP_LOGD(TAG, "ok");
-    snprintf(portBuffer, 6, "%d", pNetwork->tlsConnectParams.DestinationPort);
+     snprintf(portBuffer, 6, "%d", pNetwork->tlsConnectParams.DestinationPort);
     ESP_LOGD(TAG, "Connecting to %s/%s...", pNetwork->tlsConnectParams.pDestinationURL, portBuffer);
     if((ret = mbedtls_net_connect(&(tlsDataParams->server_fd), pNetwork->tlsConnectParams.pDestinationURL,
                                   portBuffer, MBEDTLS_NET_PROTO_TCP)) != 0) {
